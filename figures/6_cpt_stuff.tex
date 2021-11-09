@@ -1,0 +1,58 @@
+\begin{tikzpicture}
+  \coordinate (bl) at (0, 0);
+  \coordinate (br) at (6, 0);
+  \coordinate (tr) at (6, 7);
+  \coordinate (tl) at (0, 7);
+  \coordinate (x) at (3, 3.5);
+  \coordinate[label=above:$\mu$] (mu) at (4, 4.5);
+  \coordinate[label=above:$k$] (klab) at (5, 5.5);
+  \coordinate[label=above:$l$] (llab) at (3, 5.5);
+  \coordinate[label=right:$B$] (blab) at (6, 4.5);
+  \coordinate[label={[label distance=-2.5mm, sloped] below left:$N_{-l}$}] (Nl) at (5, 3.5);
+  \node (0) at (5.2, 4.5){$Ow[\mu]$};
+  \coordinate (owtr) at (6, 6.5);
+  \coordinate (owbr) at (6, 2.5);
+  \coordinate (muh) at (2, 2.5);
+  \coordinate (iwbl) at (0, 0.5);
+  \coordinate (iwtl) at (0, 4.5);
+
+  \draw[opacity=0] (bl) to (tl);
+  \draw[opacity=0] (br) to (tr);
+
+  \node at (mu)[circle,fill,inner sep=1pt]{};
+
+  \draw[fill=gray, fill opacity=0.2] (mu) to (owtr) to (owbr) -- cycle;
+
+  \draw[->] (mu) to (klab);
+  \draw[->] (mu) to (llab);
+
+
+  \draw (mu) to (x);
+  \node at (x)[circle,fill,inner sep=1pt,label=above:$X_B$]{};
+  \coordinate[label={[label distance=-2.25mm] below right:$N_{-k}$}] (klabel) at (3.50, 4);
+
+  \onslide<2->{
+    \draw[fill=gray, fill opacity=0.2] (muh) to (iwbl) to (iwtl) -- cycle;
+    \node at (muh)[circle,fill,inner sep=1pt, label=below:$\widetilde\mu$]{};
+    \draw (x) to (muh);
+    \node (0) at (0.8, 2.5){$\widetilde{Ow}[\mu]$};
+    \coordinate[label={[label distance=-2.5mm, sloped] above right:$\widetilde N_{-l}$}] (Nl) at (1, 3.5);
+    \coordinate[label={[label distance=-2.25mm] above left:$\widetilde N_{-k}$}] (klabel) at (2.5, 3);
+    \coordinate[label=left:$\widetilde B$] (blab) at (0, 2.5);
+  }
+
+  \onslide<4->{
+    \draw[line cap=round,rounded corners=1.0mm,line width=3mm,opacity=0.3,color=red] (iwtl) to (muh) to (mu) to (owbr);
+  }
+
+  \onslide<5->{
+    \begin{scope}[decoration={coil, aspect=0, segment length=1cm}]
+      \draw[fill=gray,opacity=0,fill opacity=0.2] (bl) to (tl) decorate {to (tr)} to (br) decorate {to (bl)};
+      \draw[dashed, decorate] (tl) to (tr);
+      \draw[dashed, decorate] (bl) to (br);
+      \draw (bl) to (tl);
+      \draw (br) to (tr);
+    \end{scope}
+  }
+
+\end{tikzpicture}

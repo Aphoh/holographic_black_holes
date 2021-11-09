@@ -1,0 +1,298 @@
+% !TEX program = lualatex
+\documentclass{beamer}
+\usepackage{tikz}
+\usepackage{tikzscale}
+\usetikzlibrary{decorations.pathmorphing}
+
+
+\title{Coarse Graining Holographic Black Holes}
+\subtitle{Engelhardt \& Wall 2018}
+\date{}
+\author{William Arnold}
+
+\DeclareMathOperator{\Area}{Area}
+\DeclareMathOperator{\tr}{tr}
+
+\newcommand{\Sout}{S^{(outer)}}
+\newcommand{\thk}{\theta_{(k)}}
+\newcommand{\thl}{\theta_{(l)}}
+\newcommand{\rhoa}{\rho_B^{(\alpha)}}
+
+\begin{document}
+
+  \frame[plain]{\titlepage}
+
+  \begin{frame}{HRT is great but...}
+    HRT as fine-grained entropy 
+    $$
+    S_{vN} = \frac{\Area[X]}{4G \hbar}
+    $$
+    \vfill
+    Limitations:
+    \begin{itemize}[<+(1)->]
+      \item Time-independent (works on any Cauchy slice)
+      \item No notion of changing horizon area
+      \item No generalized second law
+      \item Can't interpret changing area as entropy
+      \item Need to coarse-grain over thermalized degrees of freedom
+    \end{itemize}
+    \vfill
+  \end{frame}
+
+  \begin{frame}{Entropy for any surface?}
+    \begin{columns}
+      \begin{column}{0.4 \linewidth}
+        \begin{itemize}[<+(1)->]
+          \item Pick a (compact) Cauchy-splitting surface $\sigma$
+          \item Fix data on $\Sigma_{out}$
+          \item This fixes the outer wedge $Ow[\sigma]$
+          \item Forget everything else
+          \item Glue another spacetime, $\alpha$, inside 
+          \item Now have $\Sigma = \Sigma_{in}^{(\alpha)} \cup \Sigma{out}$
+          \item IVP $\rightarrow$ full spacetime
+          \item Some state $\rho_B^{(\alpha)}$ on boundary
+          \item Compute $S_{vN}[\rho_B^{(\alpha)}]$!
+        \end{itemize}
+
+      \end{column}
+      \begin{column}{0.6 \linewidth}
+        \only<1-4>{
+          \include{figures/holobh.tex}
+        }
+        \only<5->{
+          \include{figures/ow_recon.tex}
+        }
+      \end{column}
+    \end{columns}
+
+  \end{frame}
+
+  \hfuzz=5.002pt 
+  \begin{frame}
+    Can define a new entropy for \textit{any} surface homologous to $B$
+
+
+    $$\Sout[\sigma] = \max_{\{\alpha\}} \left[-\tr \left(\rho_B^{(\alpha)}\ln\rho_B^{(\alpha)} \right) \right]$$
+
+    \onslide<2->{
+      $\alpha \in$ all possible spacetimes created from an inner wedge
+    }
+
+    \onslide<3->{
+      For an HRT Surface, $X$,
+      $$
+      \Sout[X] = -\tr \left( \rho_B \ln \rho_B \right) = \frac{\Area[X]}{4G \hbar}
+      $$
+    }
+  \end{frame}
+
+  \begin{frame}{Surfaces}
+    \begin{columns}
+      \begin{column}{0.6 \linewidth}
+        What about other surfaces?
+        \begin{itemize}[<+(1)->]
+          \item $\thk = 0, \thl = 0$: Extremal 
+          \item Relax conditions: only $\thk = 0$
+          \item Marginal surface, stationary in the $k$ direction
+        \end{itemize}
+      \end{column}
+      \begin{column}{0.4 \linewidth}
+        \include{figures/surfaces.tex}
+      \end{column}
+    \end{columns}
+  \end{frame}
+
+  \begin{frame}{Minimality}
+    \begin{columns}
+      \begin{column}{0.6 \linewidth}
+        \begin{itemize}[<+->]
+          \item $\thk = 0, \thl = 0$, Minimal Area: HRT
+          \item Only $\thk = 0$, Minimal Area: \textbf{minimar} (minimal area, marginal) surface
+          \item Small extra condition: $\nabla_k \thl \leq 0$
+          \item True on HRT Surfaces
+        \end{itemize}
+      \end{column}
+      \begin{column}{0.4 \linewidth}
+        \include{figures/surfaces.tex}
+      \end{column}
+    \end{columns}
+  \end{frame}
+
+  \begin{frame}{Outer Entropy \& Minimar Surfaces}
+    For choice of $\alpha$, $Ow[\mu]$
+    \vspace{-1em}
+    \begin{columns}
+      \begin{column}{0.5 \linewidth}
+        \begin{itemize}[<+(1)->]
+          \item Have outer wedge, boundary
+          \item Maximin: $\exists \Sigma^{(\alpha)}$ with $X_B$ HRT
+          \item Find $\bar\mu(\Sigma^{(\alpha)})$ on $\Sigma^{(\alpha)}$
+          \item $X_B^{(\alpha)},\bar\mu(\Sigma^{(\alpha)}), B$ all homologous
+          \item[] 
+            \vspace{-1em}
+            \begin{align*}
+              S[\rho_B] &= \frac{\Area[X_B^{(\alpha)}]}{4 G\hbar} &\text{(HRT)} \\
+              \onslide<7->{
+                        &\leq \frac{\Area[\bar\mu(\Sigma^{(\alpha)})]}{4 G\hbar} &\text{(maximin)} \\
+              }
+              \onslide<8->{
+                        &\leq \frac{\Area[\mu]}{4 G\hbar} &\text{(NCC)}
+              }
+        \end{align*}
+        \end{itemize}
+      \end{column}
+      \begin{column}{0.5 \linewidth}
+        \include{figures/4_bounding_ent.tex}
+      \end{column}
+    \end{columns}
+
+  \end{frame}
+
+  \begin{frame}{Only inequalities are interesting?}
+    \begin{itemize}[<+->]
+      \item Know that $S[\rhoa] \leq \frac{\Area[\mu]}{4G\hbar}$
+      \item Since $\Sout[\mu] = \max_{\{\alpha\}} \left[ S[\rhoa] \right]$, we have
+        $$ \Sout[\mu] \leq \frac{\Area[\mu]}{4G\hbar}  $$
+      \item How tight is this bound?
+      \item Can always find $\alpha$ that saturates:
+         $$ \Sout[\mu] = \frac{\Area[\mu]}{4G\hbar}  $$
+    \end{itemize}
+  \end{frame}
+
+  \begin{frame}{Hitting the bound}
+    \begin{columns}
+      \begin{column}{0.4 \linewidth}
+        \vspace{-3em}
+        \begin{itemize}[<+(1)->]
+          \item Can glue on stationary $N_{-k}$
+          \item $\thk = 0, \thl \leq 0$ at $\mu$
+          \item Have $\nabla_k \thl \leq 0$
+          \item $\thl$ increasing along $-k$
+          \item Can find cross-section of $N_{-k}$ with $\thl = 0$
+          \item Gives us extremal $X_B$
+          \item $N_{-k}$ stationary, so $\Area[X_B] = \Area[\mu]$ 
+          \item Can $X_B$ be HRT?
+        \end{itemize}
+      \end{column}
+      \begin{column}{0.6 \linewidth}
+        \include{figures/5_making_alpha.tex}
+      \end{column}
+    \end{columns}
+  \end{frame}
+
+  \begin{frame}{Hitting the bound}
+    \begin{columns}
+      \begin{column}{0.4 \linewidth}
+        \vspace{-3em}
+        \begin{itemize}[<+->]
+          \item Need to build $Iw[\mu]$
+          \item Use CPT symmetry through $X_B$
+          \item Wormhole-like geometry
+          \item Cauchy surface: $\widetilde N_{-l} \cup \widetilde N_{-k} \cup N_{-k} \cup N_{-l}$
+          \item IVP $\rightarrow$ Full spacetime
+        \end{itemize}
+      \end{column}
+      \begin{column}{0.6 \linewidth}
+        \include{figures/6_cpt_stuff.tex}
+      \end{column}
+    \end{columns}
+  \end{frame}
+
+  \begin{frame}{Hitting the bound}
+    \begin{columns}
+      \setlength{\tabcolsep}{0pt}
+      \begin{column}{0.4 \linewidth}
+        \begin{itemize}[<+->]
+          \item Is it HRT?
+          \item Pick partial $\widetilde \Sigma_{min}, \Sigma_{min}$ where $\mu$ minimal area.
+          \item Try other extremal surfaces $X_1',X_2'$
+          \item Look at $X'_{1,2}$ on $\Sigma_{min}$ and $N_{-k}$
+          \item $\Area[\overline{X_1'}] = \Area[\mu]$ (stationarity)
+          \item $\Area[\overline{X_2'}] \geq \Area[$\mu$]$ (minimality)
+          \item Representatives are always smaller!
+            \vspace{-0.5em}
+            $$\Area[X'_{1,2}] \geq \Area[\overline{X_{1,2}'}] \geq \Area[\mu] = \Area[X_B]$$
+        \end{itemize}
+      \end{column}
+      \begin{column}{0.6 \linewidth}
+        \hspace{-1em}
+        \include{figures/7_show_hrt.tex}
+      \end{column}
+    \end{columns}
+  \end{frame}
+
+  \begin{frame}{It's an equality!}
+    Given any $\mu$ minimar, $Ow[\mu]$, we have 
+    \begin{align*}  
+      \onslide<2->{
+        \Sout &\leq \frac{\Area[\mu]}{4G\hbar} \\
+      }
+      \onslide<3->{
+        \exists \alpha \text{ with } \Sout &= \frac{\Area[\mu]}{4G\hbar} \\
+      }
+      \onslide<4->{
+        \text{So } \Sout &= \frac{\Area[\mu]}{4G\hbar}
+      }
+    \end{align*}
+    \onslide<5->{
+      Natural generalization of HRT with coarse graining!
+    }
+  \end{frame}
+
+  \begin{frame}{What about the boundary?}
+    \begin{columns}
+      \begin{column}{0.5 \linewidth}
+        \begin{itemize}[<+(1)->]
+          \item Fix state before $t_i$
+          \item Allow ``simple'' sources: bulk fields that propagate causally from boundary
+          \item Preserves $N_l$ and $\mu$
+          \item Let $\rho$ vary after $t_i$
+          \item Maximize $S_{vN}$ over this to get $S^{(simple)}$
+          \item Can show $$ S^{(simple)}[t_i] = \Sout[\sigma] $$
+        \end{itemize}
+      \end{column}
+      \begin{column}{0.5 \linewidth}
+        \include{figures/8_simple_ent.tex}
+      \end{column}
+    \end{columns}
+  \end{frame}
+
+  \begin{frame}{So... Second Law?}
+    Kind of...
+    \vspace{-1em}
+    \begin{columns}
+      \begin{column}{0.5 \linewidth}
+        \begin{itemize}[<+(1)->]
+          \item Can foliate space with minimars
+          \item Moving out means less data, higher entropy
+          \item Greater area
+          \item $S^{(simple)}$ increases at later times
+          \item Opposite case for moving in 
+        \end{itemize}
+      \end{column}
+      \begin{column}{0.5 \linewidth}
+        \include{figures/9_sec_law.tex}
+      \end{column}
+    \end{columns}
+  \end{frame}
+
+  \begin{frame}{What's next?}
+    \begin{itemize}[<+(1)->]
+      \item Outer entropy doesn't work for BH Horizons
+      \item Counterexample is tricky, has to do with nonlocal properties of the horizon (arxiv:1702.01748)
+      \item Still no nice BH area second law\ldots
+      \item Semi-classical gravity?
+        \begin{itemize}
+          \item \textit{Quantum} marginally trapped surfaces
+          \item Redo coarse graining
+          \item Raphael, Ven, Arvin did this (arxiv:1906.05299)
+        \end{itemize}
+    \end{itemize}
+  \end{frame}
+
+  \begin{frame}
+    \begin{center}
+      \Huge Thanks!
+    \end{center}
+  \end{frame}
+\end{document}
